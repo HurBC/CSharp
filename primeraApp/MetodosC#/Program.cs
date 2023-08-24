@@ -2,19 +2,32 @@
 
 class Program
 {
-    static void Main(string[] args)
+
+    static void Main()
     {
+        Console.WriteLine("Piramide");
 
-        Console.WriteLine(Suma(2, 6));
+        int rows, space;
 
-        Console.WriteLine(Suma(2.0, 6));
+        Console.Write("Enter number of rows: ");
 
-        Console.WriteLine(Suma(1, 4, 6, 3));
+        rows = int.Parse(Console.ReadLine());
+
+        for (int i = 1, k = 0; i <= rows; i++, k = 0)
+        {
+            for(space = 1; space <= rows; space++)
+            {
+                Console.Write( " " );
+            }
+
+            while(k!= 2 * i)
+            {
+                Console.Write( "*" );
+            }
+
+            Console.WriteLine();
+        }
 
     }
-
-    static int Suma(int v1, int v2) => v1 + v2;
-    static double Suma(double v1, int v2) => v1 + v2;
-    static int Suma(int v1, int v2, int v3, int v4) => v1 + v2;
-
+    
 }
