@@ -7,33 +7,45 @@
         static void Lista()
         {
             /*Lista*/
+            Console.WriteLine( "Listas:" );
+            Console.WriteLine();
 
-            //Creacion de Lista
+            //Creacion de lista
             List<int> list = new List<int>();
 
-            int[] ListaNumeros = new int[] { 5, 6, 7, 8 };
+            Display( list, "Lista recien construida" );
 
-            //Agregar a la lista
+            //Añadir a la lista
             list.Add( 1 );
             list.Add( 2 );
             list.Add( 3 );
             list.Add( 4 );
 
-            for (int i = 0; i < ListaNumeros.Length; i++)
-            {
+            Display( list, "Elementos añadidos a la lista" );
 
-                list.Add( ListaNumeros[i] );
+            //Añadir rango
+            list.AddRange( list );
 
-            }
-
-            Console.WriteLine( "Lista: " );
-            //Imprimir Lista
-            foreach (int i in list)
-            {
-                Console.Write( i + " " );
-            }
+            Display( list, "Rango añadido" );
 
             Console.WriteLine("\n");
+        }
+
+        static void Display(List<int> L, string txt)
+        {
+            Console.WriteLine(txt + ":");
+
+            Console.WriteLine(" List");
+            Console.WriteLine("  Count: {0}", L.Count);
+            Console.Write("  Lista: ");
+
+            foreach (int num in L)
+            {
+                Console.Write( " {0}", num );
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }

@@ -5,11 +5,17 @@
         static void Main( string[] args )
         {
             Lista();
-
+            /*
             Nodos();
 
             LEnlazadas();
 
+            Queue();
+
+            Stacks();
+
+            Dictionarys();
+            */
         }
     }
 }
