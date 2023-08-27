@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ListBox
 {
@@ -24,17 +12,17 @@ namespace ListBox
         {
             InitializeComponent();
 
-            pob1.MouseLeftButtonDown += Pob1_MouseLeftButtonDown;
-
             List<Poblacion> poblaciones = new List<Poblacion>();
 
-            poblaciones.Add( new Poblacion() { Poblacion1 = "Santiago", Poblacion2 = "Temuco", Temperatura1 = 15, Temperatura2 = 11 } );
-            poblaciones.Add( new Poblacion() { Poblacion1 = "Concepcion", Poblacion2 = "Viña del mar", Temperatura1 = 13, Temperatura2 = 12 } );
-            poblaciones.Add( new Poblacion() { Poblacion1 = "Rancagua", Poblacion2 = "Nancagua", Temperatura1 = 15, Temperatura2 = 15 } );
-            poblaciones.Add( new Poblacion() { Poblacion1 = "Arica", Poblacion2 = "Puerto Williams", Temperatura1 = 25, Temperatura2 = 5 } );
+            poblaciones.Add( new Poblacion( "Santiago", "Temuco", 17, 11 ) );
+            poblaciones.Add( new Poblacion( "Concepcion", "Viña del mar", 14, 14 ) );
+            poblaciones.Add( new Poblacion( "Chiloe", "Talca", 10, 19 ) );
+            poblaciones.Add( new Poblacion( "Arica", "Puerto Williams", 18, 2.5 ) );
 
 
             lstBox.ItemsSource = poblaciones;
+            lstBox.SelectionChanged += show_info;
+
         }
 
         private void show_info( object sender, RoutedEventArgs e )
@@ -48,12 +36,23 @@ namespace ListBox
 
     public class Poblacion
     {
+        public Poblacion( string p1, string p2, double t1, double t2 )
+        {
+            Poblacion1 = p1;
+            Poblacion2 = p2;
+            Temperatura1 = t1;
+            Temperatura2 = t2;
 
+            if(t1 < t2) Progress = t2 - t1;
+            else Progress = t1 - t2;
+
+        }
 
         public string Poblacion1 { get; set; }
-        public int Temperatura1 { get; set; }
+        public double Temperatura1 { get; set; }
         public string Poblacion2 { get; set; }
-        public int Temperatura2 { get; set; }
+        public double Temperatura2 { get; set; }
+        public double Progress { get; set; }
     }
 
 }

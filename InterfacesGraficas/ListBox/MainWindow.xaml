@@ -29,14 +29,16 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                             
                         </Grid.ColumnDefinitions>
-                        
-                        <TextBlock Name="pob1" Grid.Column="0" Text="{Binding Poblacion1}"></TextBlock>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Poblacion1}"></TextBlock>
                         <TextBlock Grid.Column="1" Text="{Binding Temperatura1}"></TextBlock>
                         <TextBlock Grid.Column="2" Text="{Binding Poblacion2}"></TextBlock>
                         <TextBlock Grid.Column="3" Text="{Binding Temperatura2}"></TextBlock>
-                        
+                        <ProgressBar Name="prog" Grid.Column="4" Minimum="0" Maximum="40" Value="{Binding Progress}"/>
+
                     </Grid>
                     
                 </DataTemplate>
