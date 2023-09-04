@@ -7,8 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Clientes" FontSize="30" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="ClientesList" Margin="325,109,325,108"/>
+        <Label Content="Clientes" FontSize="30" HorizontalAlignment="Left" Margin="90,28,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="ClientesList" Margin="42,108,548,108" SelectionChanged="ClientesList_SelectionChanged"/>
+        <Label Content="Fecha pedidos" FontSize="30" HorizontalAlignment="Left" Margin="274,28,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="FechaPedidosList" Margin="269,108,321,108"/>
+        <Label Content="Pedidos" FontSize="30" HorizontalAlignment="Left" Margin="578,28,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="PedidosList" Margin="504,108,34,108" />
+        <Button Content="DELETE" Click="Button_Click" HorizontalAlignment="Left" Margin="652,331,0,0" VerticalAlignment="Top" Height="32" Width="114"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="198,389,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="42,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="37,326,0,0" VerticalAlignment="Top"/>
+
+
 
     </Grid>
 </Window>
