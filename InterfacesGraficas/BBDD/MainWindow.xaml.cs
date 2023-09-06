@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace BBDD
 {
@@ -57,14 +56,135 @@ namespace BBDD
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show( ex.ToString() );
             }
 
         }
 
-        private void MostrarPedidos()
+        private void All_Products()
+        {
+            try
+            {
+
+                // Consulta SQL para recuperar datos de la tabla "Pedido" al unirlo con la tabla "Cliente" usando la relación entre sus Id.
+                string Query = "SELECT *, CONCAT(P.cCliente, ' ', P.fechaPedido, ' ', P.formaPago) as 'Info_Pedido'" +
+                   "FROM Pedido P";
+
+                SqlDataAdapter sqlData = new SqlDataAdapter(Query, _connection);
+
+                using (sqlData)
+                {
+                    DataTable data = new DataTable();
+
+                    // Llena el DataTable con los resultados de la consulta.
+                    sqlData.Fill( data );
+
+                    // Configura cómo se muestra la información en la lista PedidosList.
+                    PedidosList.DisplayMemberPath = "Info_Pedido"; // Muestra "Info_Pedido".
+                    PedidosList.SelectedValuePath = "Id"; // Usa "Id" como valor seleccionado.
+                    PedidosList.ItemsSource = data.DefaultView; // Establece los datos de origen como la vista predeterminada de la tabla data.
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show( ex.ToString() );
+            }
+
+        }
+
+        SqlConnection _connection;
+
+        private void Button_Click( object sender, RoutedEventArgs e )
+        {
+
+            // Consulta SQL para eliminar un pedido por su Id.
+            string Query = "DELETE FROM Pedido WHERE Id = @PedidoID";
+
+            // Crea un comando SQL con la consulta y la conexión proporcionadas.
+            SqlCommand command = new SqlCommand(Query, _connection);
+
+            // Abre la conexión a la base de datos.
+            _connection.Open();
+
+            // Establece el valor del parámetro "@PedidoID" con el valor seleccionado de la lista PedidosList.
+            command.Parameters.AddWithValue( "@PedidoID", PedidosList.SelectedValue );
+
+            // Ejecuta la consulta SQL para eliminar el pedido.
+            command.ExecuteNonQuery();
+
+            // Llama al método All_Products para actualizar la lista de pedidos después de la eliminación.
+            All_Products();
+
+            // Cierra la conexión a la base de datos después de realizar la operación.
+            _connection.Close();
+
+        }
+
+        private void Button_Click_1( object sender, RoutedEventArgs e )
+        {
+
+            // Consulta SQL para eliminar un pedido por su Id.
+            string Query = "INSERT INTO Cliente (nombre, direccion, poblacion, telefono) VALUES(@Name, @Direction, @Poblation, @Phone)";
+
+            // Crea un comando SQL con la consulta y la conexión proporcionadas.
+            SqlCommand command = new SqlCommand(Query, _connection);
+
+            // Abre la conexión a la base de datos.
+            _connection.Open();
+
+            // Establece el valor del parámetro "@PedidoID" con el valor seleccionado de la lista PedidosList.
+            command.Parameters.AddWithValue( "@Name", ClientName.Text );
+            command.Parameters.AddWithValue( "@Direction", ClientDirection.Text );
+            command.Parameters.AddWithValue( "@Poblation", ClientComun.Text );
+            command.Parameters.AddWithValue( "@Phone", ClientPhone.Text );
+
+            // Ejecuta la consulta SQL para eliminar el pedido.
+            command.ExecuteNonQuery();
+
+            // Llama al método All_Products para actualizar la lista de pedidos después de la eliminación.
+            b2n();
+            MostrarNombres();
+
+            // Cierra la conexión a la base de datos después de realizar la operación.
+            _connection.Close();
+        }
+
+        private void Button_Click_2( object sender, RoutedEventArgs e )
+        {
+
+            // Consulta SQL para eliminar un pedido por su Id.
+            string Query = "DELETE FROM Cliente WHERE Id = @ClientID";
+
+            // Crea un comando SQL con la consulta y la conexión proporcionadas.
+            SqlCommand command = new SqlCommand(Query, _connection);
+
+            // Abre la conexión a la base de datos.
+            _connection.Open();
+
+            // Establece el valor del parámetro "@PedidoID" con el valor seleccionado de la lista PedidosList.
+            command.Parameters.AddWithValue( "@ClientID", ClientesList.SelectedValue );
+
+            // Ejecuta la consulta SQL para eliminar el pedido.
+            command.ExecuteNonQuery();
+
+            // Llama al método All_Products para actualizar la lista de pedidos después de la eliminación.
+            MostrarNombres();
+
+            // Cierra la conexión a la base de datos después de realizar la operación.
+            _connection.Close();
+        }
+
+        private void b2n()
+        {
+            ClientName.Text = "";
+            ClientDirection.Text = "";
+            ClientComun.Text = "";
+            ClientPhone.Text = "+56 9";
+        }
+
+        private void ClientesList_MouseDoubleClick( object sender, System.Windows.Input.MouseButtonEventArgs e )
         {
             try
             {
@@ -102,71 +222,6 @@ namespace BBDD
             {
                 MessageBox.Show( ex.ToString() );
             }
-        }
-
-        private void All_Products()
-        {
-            try
-            {
-
-                // Consulta SQL para recuperar datos de la tabla "Pedido" al unirlo con la tabla "Cliente" usando la relación entre sus Id.
-                string Query = "SELECT *, CONCAT(P.cCliente, ' ', P.fechaPedido, ' ', P.formaPago) as 'Info_Pedido'" +
-                   "FROM Pedido P";
-
-                SqlDataAdapter sqlData = new SqlDataAdapter(Query, _connection);
-
-                using (sqlData)
-                {
-                    DataTable data = new DataTable();
-
-                    // Llena el DataTable con los resultados de la consulta.
-                    sqlData.Fill( data );
-
-                    // Configura cómo se muestra la información en la lista PedidosList.
-                    PedidosList.DisplayMemberPath = "Info_Pedido"; // Muestra "Info_Pedido".
-                    PedidosList.SelectedValuePath = "Id"; // Usa "Id" como valor seleccionado.
-                    PedidosList.ItemsSource = data.DefaultView; // Establece los datos de origen como la vista predeterminada de la tabla data.
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show( ex.ToString() );
-            }
-
-        }
-
-        private void ClientesList_SelectionChanged( object sender, SelectionChangedEventArgs e )
-        {
-            // Llama al método para mostrar los pedidos para el cliente seleccionado cuando cambia la selección.
-            MostrarPedidos();
-        }
-
-        SqlConnection _connection;
-
-        private void Button_Click( object sender, RoutedEventArgs e )
-        {
-
-            // Consulta SQL para eliminar un pedido por su Id.
-            string Query = "DELETE FROM Pedido WHERE Id = @PedidoID";
-
-            // Crea un comando SQL con la consulta y la conexión proporcionadas.
-            SqlCommand command = new SqlCommand(Query, _connection);
-
-            // Abre la conexión a la base de datos.
-            _connection.Open();
-
-            // Establece el valor del parámetro "@PedidoID" con el valor seleccionado de la lista PedidosList.
-            command.Parameters.AddWithValue( "@PedidoID", PedidosList.SelectedValue );
-
-            // Ejecuta la consulta SQL para eliminar el pedido.
-            command.ExecuteNonQuery();
-
-            // Llama al método All_Products para actualizar la lista de pedidos después de la eliminación.
-            All_Products();
-
-            // Cierra la conexión a la base de datos después de realizar la operación.
-            _connection.Close();
-
         }
     }
 }
