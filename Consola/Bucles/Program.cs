@@ -4,56 +4,44 @@ class Program
 {
     static void Main()
     {
+        /*--------------*/
+        /* Bucles en C# */
+        /*--------------*/
 
-        Random rnd = new Random();
-        int n = rnd.Next(0, 100);
+        //Los bucles son una sentencia de codigo que se repite
+        //existen 4 tipos de bucles: for, foreach, while y do-while
 
-        int choice;
+        /* Bucle for */
 
-        int attemps = 0;
+        //el bucle for es un tipo de bucle que se repite una cierta cantidad de veces
+        //estos bucles se utilizan cuando sabemos cuantas veces se repetira una accion
+        //Para crear un bucle for se utiliza la palabra reservada "for" junto a unos parentesis
+        //y sus parametros los cuales son 3 por lo general, DEBEN ser de tipo entero y se separan con ";"
+        //el primer parametro establecera la variable por la cual iterara el bucle for
+        //el segundo sera la condicional que verificara si el bucle se debe repetir o no
+        //y el tercero modificara el primer parametro sumandole un valor o restandole un valor
+        //EJ: for(int i=0; i<10; i++)
+        //Aqui le decimos al bucle que establesca i en 0 y que se repita mientra i sea menor que 10
+        //y al final se le dira que se le sume 1 a i
 
-        bool gameOver = false;
-
-        Console.WriteLine("Oye ctm bienvenido a esta wea de juego \n Elige un número kliao entre 1 y 100. perkin \n ¿seras un gigachad y sabras el numero? o solo eri un perkin");
-
-        do
+        for (int i = 0; i < 10;  i++)
         {
-
-            attemps++;
-
-            try
-            {
-                Console.WriteLine("\n Ingresa tu wea de numero:");
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Oye saco wea, la wea es elegir un numero no escrbir tonto ctm malaya klia, por wn tu numero sera 0");
-                choice = 0;
-            }
-            catch (OverflowException ex)
-            {
-                Console.WriteLine("Tu numero es demasiado grande 0//~//0, tu numero sera pasado a 100 senpai");
-                choice = 100;
-            }
-
-            if (choice > n) Console.WriteLine("El numero es mas chico, como tu pija");
-
-            else if (choice < n) Console.WriteLine("El numero es mas grande, como mi pija");
-
-            if (attemps == 10) gameOver = true;
-
-
-
-        } while (choice != n);
-
-        if (gameOver == true) Console.WriteLine("JAJAJAJAJAJ EL WN MALO, Como no podi adivinar un numero JAJAJAJA el numero era {0}, pero vo no pudiste", n);
-
-        else
-        {
-            if (attemps > 1) Console.WriteLine("Veo que lo conseguiste en {0} intentos, yo lo haria a la primera", attemps);
-            else Console.WriteLine("Que trampa klia hiciste pa hacerlo a la primera ctm?, na tranquilo manito, sin duda eres un chad, muak cuidate uwu");
+            //escribira "Hello World" 10 veces
+            Console.WriteLine("Hello World");
         }
+
+        for (int i = 0; i <= 10; i++)
+        {
+            //Imprimira el valor de i mientras sea menor o igual a 10
+            Console.WriteLine( i );
+        }
+
+        for ( int i = 10; i >= 0; i--)
+        {
+            //Imprimira i hata que sea 0
+            Console.WriteLine( i );
+        }
+
 
     }
 

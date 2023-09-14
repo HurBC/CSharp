@@ -142,6 +142,23 @@
         }
         //Esto hara que nuestro codigo se vea mas limpio y mas leible
 
+        /*----------------------*/
+        /* Operadores Ternarios */
+        /*----------------------*/
+
+        //El operador ternario o condicional ?, se encarga de devolver datos booleanos
+        //Sirve mas que nada cuando solo se necesita evaluar cuando algo es verdare o falso
+        //estos se conforman por la condicion seguido de "?" y el resultado si es verdadero
+        //seguido de ":" y el resultado si es falso
+
+        int age = 20;
+
+        //Operador ternario
+        string msg = (age >= 18) ? "Mayor de edad" : "Menor de edad";
+
+        //en este caso el valor de mensaje es "Mayor de edad", si "age" fuera menor a 18
+        //el valor de msg seria "Menor de edad"
+
 
         /* swicth */
 

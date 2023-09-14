@@ -1,0 +1,276 @@
+/*
+Script de implementación para DunderMifflin
+
+Una herramienta generó este código.
+Los cambios realizados en este archivo podrían generar un comportamiento incorrecto y se perderán si
+se vuelve a generar el código.
+*/
+
+GO
+SET ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, ARITHABORT, CONCAT_NULL_YIELDS_NULL, QUOTED_IDENTIFIER ON;
+
+SET NUMERIC_ROUNDABORT OFF;
+
+
+GO
+:setvar DatabaseName "DunderMifflin"
+:setvar DefaultFilePrefix "DunderMifflin"
+:setvar DefaultDataPath "C:\Program Files\Microsoft SQL Server\MSSQL16.BRUHSERVER\MSSQL\DATA\"
+:setvar DefaultLogPath "C:\Program Files\Microsoft SQL Server\MSSQL16.BRUHSERVER\MSSQL\DATA\"
+
+GO
+:on error exit
+GO
+/*
+Detectar el modo SQLCMD y deshabilitar la ejecución del script si no se admite el modo SQLCMD.
+Para volver a habilitar el script después de habilitar el modo SQLCMD, ejecute lo siguiente:
+SET NOEXEC OFF; 
+*/
+:setvar __IsSqlCmdEnabled "True"
+GO
+IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
+    BEGIN
+        PRINT N'El modo SQLCMD debe estar habilitado para ejecutar correctamente este script.';
+        SET NOEXEC ON;
+    END
+
+
+GO
+USE [$(DatabaseName)];
+
+
+GO
+
+IF (SELECT OBJECT_ID('tempdb..#tmpErrors')) IS NOT NULL DROP TABLE #tmpErrors
+GO
+CREATE TABLE #tmpErrors (Error int)
+GO
+SET XACT_ABORT ON
+GO
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+GO
+BEGIN TRANSACTION
+GO
+PRINT N'Creando Tabla [dbo].[Categories]...';
+
+
+GO
+CREATE TABLE [dbo].[Categories] (
+    [Id_cat]   INT        IDENTITY (1, 1) NOT NULL,
+    [name_cat] NCHAR (45) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id_cat] ASC)
+);
+
+
+GO
+IF @@ERROR <> 0
+   AND @@TRANCOUNT > 0
+    BEGIN
+        ROLLBACK;
+    END
+
+IF OBJECT_ID(N'tempdb..#tmpErrors') IS NULL
+    CREATE TABLE [#tmpErrors] (
+        Error INT
+    );
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        INSERT  INTO #tmpErrors (Error)
+        VALUES                 (1);
+        BEGIN TRANSACTION;
+    END
+
+
+GO
+PRINT N'Creando Tabla [dbo].[Departaments]...';
+
+
+GO
+CREATE TABLE [dbo].[Departaments] (
+    [Id_dep]   INT        IDENTITY (1, 1) NOT NULL,
+    [name_dep] NCHAR (45) NOT NULL,
+    [salary]   MONEY      NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id_dep] ASC)
+);
+
+
+GO
+IF @@ERROR <> 0
+   AND @@TRANCOUNT > 0
+    BEGIN
+        ROLLBACK;
+    END
+
+IF OBJECT_ID(N'tempdb..#tmpErrors') IS NULL
+    CREATE TABLE [#tmpErrors] (
+        Error INT
+    );
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        INSERT  INTO #tmpErrors (Error)
+        VALUES                 (1);
+        BEGIN TRANSACTION;
+    END
+
+
+GO
+PRINT N'Creando Tabla [dbo].[Employees]...';
+
+
+GO
+CREATE TABLE [dbo].[Employees] (
+    [Id_emp]     INT        IDENTITY (1, 1) NOT NULL,
+    [first_name] NCHAR (15) NOT NULL,
+    [last_name]  NCHAR (15) NOT NULL,
+    [age]        INT        NOT NULL,
+    [DEPID]      INT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id_emp] ASC)
+);
+
+
+GO
+IF @@ERROR <> 0
+   AND @@TRANCOUNT > 0
+    BEGIN
+        ROLLBACK;
+    END
+
+IF OBJECT_ID(N'tempdb..#tmpErrors') IS NULL
+    CREATE TABLE [#tmpErrors] (
+        Error INT
+    );
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        INSERT  INTO #tmpErrors (Error)
+        VALUES                 (1);
+        BEGIN TRANSACTION;
+    END
+
+
+GO
+PRINT N'Creando Tabla [dbo].[Products]...';
+
+
+GO
+CREATE TABLE [dbo].[Products] (
+    [Id_pro]   INT        IDENTITY (1, 1) NOT NULL,
+    [name_pro] NCHAR (45) NOT NULL,
+    [price]    MONEY      NOT NULL,
+    [stock]    INT        NOT NULL,
+    [CATID]    INT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id_pro] ASC)
+);
+
+
+GO
+IF @@ERROR <> 0
+   AND @@TRANCOUNT > 0
+    BEGIN
+        ROLLBACK;
+    END
+
+IF OBJECT_ID(N'tempdb..#tmpErrors') IS NULL
+    CREATE TABLE [#tmpErrors] (
+        Error INT
+    );
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        INSERT  INTO #tmpErrors (Error)
+        VALUES                 (1);
+        BEGIN TRANSACTION;
+    END
+
+
+GO
+PRINT N'Creando Clave externa [dbo].[FK_Departament]...';
+
+
+GO
+ALTER TABLE [dbo].[Employees] WITH NOCHECK
+    ADD CONSTRAINT [FK_Departament] FOREIGN KEY ([DEPID]) REFERENCES [dbo].[Departaments] ([Id_dep]);
+
+
+GO
+IF @@ERROR <> 0
+   AND @@TRANCOUNT > 0
+    BEGIN
+        ROLLBACK;
+    END
+
+IF OBJECT_ID(N'tempdb..#tmpErrors') IS NULL
+    CREATE TABLE [#tmpErrors] (
+        Error INT
+    );
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        INSERT  INTO #tmpErrors (Error)
+        VALUES                 (1);
+        BEGIN TRANSACTION;
+    END
+
+
+GO
+PRINT N'Creando Clave externa [dbo].[FK_Categories]...';
+
+
+GO
+ALTER TABLE [dbo].[Products] WITH NOCHECK
+    ADD CONSTRAINT [FK_Categories] FOREIGN KEY ([CATID]) REFERENCES [dbo].[Categories] ([Id_cat]);
+
+
+GO
+IF @@ERROR <> 0
+   AND @@TRANCOUNT > 0
+    BEGIN
+        ROLLBACK;
+    END
+
+IF OBJECT_ID(N'tempdb..#tmpErrors') IS NULL
+    CREATE TABLE [#tmpErrors] (
+        Error INT
+    );
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        INSERT  INTO #tmpErrors (Error)
+        VALUES                 (1);
+        BEGIN TRANSACTION;
+    END
+
+
+GO
+
+IF EXISTS (SELECT * FROM #tmpErrors) ROLLBACK TRANSACTION
+GO
+IF @@TRANCOUNT>0 BEGIN
+PRINT N'La parte de transacción de la actualización de la base de datos se realizó correctamente.'
+COMMIT TRANSACTION
+END
+ELSE PRINT N'Error de la parte de transacción de la actualización de la base de datos.'
+GO
+IF (SELECT OBJECT_ID('tempdb..#tmpErrors')) IS NOT NULL DROP TABLE #tmpErrors
+GO
+GO
+PRINT N'Comprobando los datos existentes con las restricciones recién creadas';
+
+
+GO
+USE [$(DatabaseName)];
+
+
+GO
+ALTER TABLE [dbo].[Employees] WITH CHECK CHECK CONSTRAINT [FK_Departament];
+
+ALTER TABLE [dbo].[Products] WITH CHECK CHECK CONSTRAINT [FK_Categories];
+
+
+GO
+PRINT N'Actualización completada.';
+
+
+GO
