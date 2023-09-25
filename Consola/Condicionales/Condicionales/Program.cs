@@ -151,6 +151,41 @@
         //estos se conforman por la condicion seguido de "?" y el resultado si es verdadero
         //seguido de ":" y el resultado si es falso
 
+
+        // Let's use the example from the previous post
+
+        int gfAge = 18;
+
+
+
+
+
+
+
+
+
+        if (gfAge >= 18)
+        {
+            if(gfAge < 80)
+            {
+                Console.WriteLine( "Your girlfriend is cute Bro, what's her Instagram?" );
+            }
+            else
+            {
+                Console.WriteLine( "Your girlfriend looks like my grandmother....wait a minute 💀" );
+            }
+        }
+        else
+        {
+            Console.WriteLine( "Bro call the FBI NOW" );
+        }
+
+
+
+
+
+
+
         int age = 20;
 
         //Operador ternario
@@ -235,5 +270,40 @@
                 break;
 
         }
+
+
+        int Weekday = 5;
+
+        switch (Weekday)
+        {
+            case 1:
+                Console.WriteLine( "It's Monday, I don't want to work" );
+                break;
+            case 2:
+                Console.WriteLine( "It's Tuesday, I don't want to work" );
+                break;
+            case 3:
+                Console.WriteLine( "It's Wednesday, I don't want to work" );
+                break;
+            case 4:
+                Console.WriteLine( "It's Thursday, I don't want to work" );
+                break;
+            case 5:
+                Console.WriteLine( "It's Friday lets gooo, I can finally rest" );
+                break;
+            case 6:
+                Console.WriteLine( "Saturday, *sleeps all day*" );
+                break;
+            case 7:
+                Console.Write( "How the fuck is it Sunday?!?!?" );
+                Console.Write( ", bro I don't even enjoy the weekend *starts crying*" );
+                break;
+            default:
+                Console.WriteLine( "There are no more than 7 days of the week stupid" );
+                break;
+        }
+
+
+
     }
 }

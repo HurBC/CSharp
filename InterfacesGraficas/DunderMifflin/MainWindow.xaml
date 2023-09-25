@@ -5,8 +5,110 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DunderMifflin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Dunder Mifflin" Height="450" Width="820" ResizeMode="NoResize">
+    <Grid Background="LightGray">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="130"/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="5">
+
+            <Label Content="Empleados" HorizontalAlignment="Center" FontSize="20"/>
+            
+            <StackPanel Orientation="Horizontal" Height="55" >
+
+                <Label Content="Selecciona un departamento" VerticalAlignment="Center" />
+
+                <ComboBox Name="DepList" SelectionChanged="DepList_SelectionChanged" MinWidth="230" Margin="0 10" BorderThickness="0" />
+
+            </StackPanel>
+
+            <ListBox Name="EmpList" MinHeight="180">
+
+                <ListBox.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding Path=Id}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Path=FirstName}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Path=LastName}" />
+                            <TextBlock Grid.Column="3" Text="{Binding Path=Age}" />
+
+                        </Grid>
+                        
+                    </DataTemplate>
+                    
+                </ListBox.ItemTemplate>
+                
+            </ListBox>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
+
+            <Label Content="Productos" FontSize="20" HorizontalAlignment="Center" />
+
+            <StackPanel Orientation="Horizontal" Height="55">
+
+                <Label Content="Selecciona una categoria" VerticalAlignment="Center" />
+
+                <ComboBox Name="CatList"  MinWidth="230" Margin="0 10" BorderThickness="0" SelectionChanged="CatList_SelectionChanged" />
+
+            </StackPanel>
+
+            <ListBox Name="ProList" MinHeight="180">
+
+                <ListBox.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="230" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding Path=IdP}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Path=Name}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Path=Price}" />
+                            <TextBlock Grid.Column="3" Text="{Binding Path=Stock}" />
+                            
+                        </Grid>
+                        
+                    </DataTemplate>
+                    
+                </ListBox.ItemTemplate>
+                
+            </ListBox>
+
+        </StackPanel>
+
     </Grid>
 </Window>

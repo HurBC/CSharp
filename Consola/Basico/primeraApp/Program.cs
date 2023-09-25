@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.IO;
+using static System.Net.WebRequestMethods;
 
 class Program
 {
@@ -11,18 +15,46 @@ class Program
         /*-------------------*/
 
         //Para imprimir en consola se ocupa la clase "Console" junto a su metodo WriteLine para dar un salto de linea automatico
-
-        Console.WriteLine( "Hello World" );
+        /*
+        Console.WriteLine( "Your Mom" );
 
         //Tambien puedes ocupar el metodo Write el cual no da un salto de linea automatico
 
-        Console.Write( "Hello " );
-        Console.Write( "World" );
+        Console.Write( "Your " );
+        Console.Write( "M" );
+        Console.Write( "O" );
+        Console.Write( "M" );
         Console.Write( "\n" );
+        */
+
+        // sbyte represents 16-bit signed integers. Range from -32,768 to 32,767.
+        sbyte FoodInVenezuela = -123;
+
+        // byte represents 8-bit unsigned integers. Range from 0 to 255.
+        byte HeightOfYourShortFriend = 3;
+
+        // short represents 16-bit signed integers. Range from -32,768 to 32,767.
+        short TheHoursISleepDaily = -1240;
+
+        // ushort 
+        ushort HoursIveSpentAwakeSinceMay = 3124;
+
+        int FreeNCode = 178208;
+
+        uint CellsYouHaveLostInTheLastFiveSeconds =  830000;
+
+        long ageOfTheEarth = 4543000000;
+
+        ulong YourMothersWeight = 18446744073709551615;
+
+
+
+
+
+
+
 
         //en el ejemplo anterior ambas formas hacen lo mismo
-
-
 
         /*----------------------------------------*/
         /*Declaracion de Variables numericas en C#*/
@@ -126,7 +158,7 @@ class Program
 
         //Interpolacion de cadenas
         //este se suele utilizar mas en los Console.WriteLine
-        Console.WriteLine("Half Life 3 es {0}, dato Float: {1}, dato Double: {2}, dato Decimal: {3}", HalfLife3, decimalSimple, decimalDoble, decimalPreciso);
+        //Console.WriteLine("Half Life 3 es {0}, dato Float: {1}, dato Double: {2}, dato Decimal: {3}", HalfLife3, decimalSimple, decimalDoble, decimalPreciso);
 
 
         //Chars
@@ -160,6 +192,34 @@ class Program
 
         //En este ejemplo se declaro una constante de tipo doble que almacena el valor de PI
         //Este valor NO SE PODRA CAMBIAR DURANTE LA EJECUCION DEL PROGRAMA
+
+        int num1 = 1, num2 = 2;
+
+        int Addition = num1 + num2;
+        int Subtraction = num1 - num2;
+        int Multiplication = num1 * num2;
+        int Division = num2 / num1;
+        int Modulus = num1 % num2;
+        int Increment = num1++;
+        int Decrement = num2--;
+
+        Console.WriteLine( 1 == 1 );
+        Console.WriteLine( 1 != 1 );
+        Console.WriteLine( 2 > 1 );
+        Console.WriteLine( 2 < 1 );
+        Console.WriteLine( 2 >= 1 );
+        Console.WriteLine( 1 <= 2 );
+
+        if (Addition == 3 && Subtraction == -1)
+        {
+            Console.WriteLine( "Addition and subtraction are correct" );
+        }
+
+        if (Multiplication == 2 || Division == 3)
+        {
+            Console.WriteLine( "Multiplication or division is correct" );
+        }
+
 
     }
 
