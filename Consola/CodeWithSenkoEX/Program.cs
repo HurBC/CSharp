@@ -2,13 +2,19 @@
 {
     internal class Program
     {
+
+        static void sayHello(string name = "invited" )
+        {
+            Console.WriteLine("Hello " + name);
+        }
+
         static void Main( string[] args )
         {
-            Random random = new Random();
 
-            int randomNumber, value;
+            sayHello();
+            sayHello( "Senko" );
 
-            randomNumber = random.Next(1, 101);
         }
+
     }
 }

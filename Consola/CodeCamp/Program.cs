@@ -24,8 +24,15 @@
 
             // variables that support data entry
             int maxPets = 8;
+<<<<<<< HEAD
             string? readResult;
             string menuSelection = "";
+=======
+
+            string? readResult;
+            string menuSelection = "";
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
             decimal decimalDonation = 0.00m;
 
             // array used to store runtime data
@@ -44,6 +51,10 @@
                         animalPersonalityDescription = "loves to have her belly rubbed and likes to chase her tail. gives lots of kisses.";
                         animalNickname = "lola";
                         suggestedDonation = "85.00";
+<<<<<<< HEAD
+=======
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                         break;
 
                     case 1:
@@ -54,6 +65,10 @@
                         animalPersonalityDescription = "loves to have his ears rubbed when he greets you at the door, or at any time! loves to lean-in and give doggy hugs.";
                         animalNickname = "gus";
                         suggestedDonation = "49.99";
+<<<<<<< HEAD
+=======
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                         break;
 
                     case 2:
@@ -64,6 +79,10 @@
                         animalPersonalityDescription = "friendly";
                         animalNickname = "snow";
                         suggestedDonation = "40.00";
+<<<<<<< HEAD
+=======
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                         break;
 
                     case 3:
@@ -85,6 +104,10 @@
                         animalPersonalityDescription = "";
                         animalNickname = "";
                         suggestedDonation = "";
+<<<<<<< HEAD
+=======
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                         break;
 
                 }
@@ -97,9 +120,14 @@
                 ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
 
                 if ( !decimal.TryParse( suggestedDonation, out decimalDonation ) )
+<<<<<<< HEAD
                 {
                     decimalDonation = 45.00m; // if suggestedDonation NOT a number, default to 45.00
                 }
+=======
+                    decimalDonation = 45.00m; // if suggestedDonation NOT a number, default to 45.00
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                 ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
             }
 
@@ -116,10 +144,16 @@
                 Console.WriteLine( "Enter your selection number (or type Exit to exit the program)" );
 
                 readResult = Console.ReadLine();
+<<<<<<< HEAD
                 if ( readResult != null )
                 {
                     menuSelection = readResult.ToLower();
                 }
+=======
+
+                if ( readResult != null )
+                    menuSelection = readResult.ToLower();
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
 
                 // switch-case to process the selected menu option
                 switch ( menuSelection )
@@ -131,6 +165,10 @@
                             if ( ourAnimals[i, 0] != "ID #: " )
                             {
                                 Console.WriteLine();
+<<<<<<< HEAD
+=======
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                                 for ( int j = 0; j < 7; j++ )
                                 {
                                     Console.WriteLine( ourAnimals[i, j].ToString() );
@@ -139,6 +177,10 @@
                         }
 
                         Console.WriteLine( "\r\nPress the Enter key to continue" );
+<<<<<<< HEAD
+=======
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                         readResult = Console.ReadLine();
 
                         break;
@@ -147,11 +189,15 @@
                         // #1 Display all dogs with a multiple search characteristics
 
                         string dogCharacteristic = "";
+<<<<<<< HEAD
                         string[] dogCharacteristics;
+=======
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
 
                         while ( dogCharacteristic == "" )
                         {
                             // #2 have user enter multiple comma separated characteristics to search for
+<<<<<<< HEAD
                             Console.WriteLine( $"\r\nEnter one desired dog characteristic to search for separated by comas" );
                             readResult = Console.ReadLine();
                             if ( ( readResult != null ) && ( readResult.Length != 0 ) )
@@ -160,15 +206,33 @@
 
                                 dogCharacteristics = dogCharacteristic.Split( ", " );
 
+=======
+                            Console.WriteLine( $"\r\nEnter one desired dog characteristic to search for" );
+
+                            readResult = Console.ReadLine();
+
+                            if ( readResult != null )
+                            {
+                                dogCharacteristic = readResult.ToLower().Trim();
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                                 Console.WriteLine();
                             }
                         }
 
                         bool noMatchesDog = true;
+<<<<<<< HEAD
                         string dogDescription = "";
 
                         // #4 update to "rotating" animation with countdown
                         string[] searchingIcons = {"|", "\\", "-", "/", "|", "-"};
+=======
+
+                        string dogDescription = "";
+
+                        // #4 update to "rotating" animation with countdown
+                        string[] searchingIcons = {"-", "/", "|", "\\", "-", "|"};
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
 
                         // loop ourAnimals array to search for matching animals
                         for ( int i = 0; i < maxPets; i++ )
@@ -183,9 +247,16 @@
                                 for ( int j = 5; j > -1; j-- )
                                 {
                                     // #5 update "searching" message to show countdown 
+<<<<<<< HEAD
                                     foreach ( string characteristic in dogCharacteristics )
                                     {
                                         Console.Write( $"\rsearching...{dogCharacteristic} {icon}" );
+=======
+                                    foreach ( string icon in searchingIcons )
+                                    {
+                                        Console.Write( $"\rsearching our dog {ourAnimals[i, 3]} for {dogCharacteristic} {icon}" );
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                                         Thread.Sleep( 250 );
                                     }
 
@@ -208,11 +279,18 @@
                         }
 
                         if ( noMatchesDog )
+<<<<<<< HEAD
                         {
                             Console.WriteLine( "None of our dogs are a match found for: " + dogCharacteristic );
                         }
 
                         Console.WriteLine( "\n\rPress the Enter key to continue" );
+=======
+                            Console.WriteLine( "None of our dogs are a match found for: " + dogCharacteristic );
+
+                        Console.WriteLine( "\n\rPress the Enter key to continue" );
+
+>>>>>>> b3f4a2286348db21c3c54d761d43f1c06b4ec73c
                         readResult = Console.ReadLine();
 
                         break;

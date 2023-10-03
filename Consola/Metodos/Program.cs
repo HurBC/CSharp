@@ -19,7 +19,7 @@
         //Estos metodos se utilizan por lo general para controlar datos, insertar datos o leer datos
         //Ejemplo: agregar un nuevo empleado a una lista
 
-        void Ejemplo1()
+        static void Ejemplo1()
         {
             Console.WriteLine("Hello");
         }
@@ -30,22 +30,22 @@
         //Estos metodos se suelen utilizar para operaciones matematicas o cuando se necesite devolver un valor de cualquier tipo
         //sea texto, numerico, boleano, etc
 
-        int Ejemplo2()
+        static int Ejemplo2()
         {
             return 1 + 2;
         }
 
-        string Ejemplo2_1()
+        static string Ejemplo2_1()
         {
             return "hello";
         }
 
-        bool Ejemplo2_2()
+        static bool Ejemplo2_2()
         {
             return true;
         }
 
-        double Ejemplo2_3()
+        static double Ejemplo2_3()
         {
             return 2 / 5;
         }
@@ -58,12 +58,12 @@
         // Los parámetros se definen dentro del método junto con su tipo y se separan por comas.
         // Se deben proporcionar al invocar el método.
 
-        void EmjemploParametros(string txt )
+        static void EmjemploParametros(string txt )
         {
             Console.WriteLine(txt);
         }
 
-        int Suma(int n1, int n2)
+        static int Suma(int n1, int n2)
         {
             return n1 + n2;
         }
@@ -72,19 +72,19 @@
         //Los parametros opcionales sirven para no tener que colocar todos los parametros en una invocacion de metodo
         //estos parametros se declaran con un valor ya asignado
 
-        void ParametrosOpcionales(string txt="Hello")
+        static void ParametrosOpcionales(string txt="Hello")
         {
             Console.WriteLine(txt);   
         }
 
-        int Suma2(int n1, int n2, int n3 = 0)
+        static int Suma2(int n1, int n2, int n3 = 0)
         {
-            return n1 + n2 + n3
+            return n1 + n2 + n3;
         }
         //En este ejemplo se le asignan 3 parametros al metodo Suma2 siendo uno de estos opcional
         //los parametros opcionles se deben declarar SIEMPRE despues de los parametros no opcionales
 
-            
+
         /*-------------------------*/
         /* Sobrecarga de un metodo */
         /*-------------------------*/
@@ -92,18 +92,18 @@
         //La sobrecarga en un metodo nos permite tener varios metodos con el mismo nombre sin que de error
         //Esto se logra al pasarle diferentes tipos de parametros tanto en diferente cantidad como en tipo
 
-        void txt()
+        static void txt()
         {
             Console.WriteLine("Hello");
         }
 
-        void txt(string str)
+        static void txt(string str)
         {
             Console.WriteLine(str);
         }
         // La sobrecarga de métodos permite tener varios métodos con el mismo nombre pero diferente cantidad o tipo de parámetros.
         // Esto se logra al pasar diferentes tipos o cantidad de parámetros.
-        void txt(int num)
+        static void txt(int num)
         {
             Console.WriteLine(num.ToString());
         }
