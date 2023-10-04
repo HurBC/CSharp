@@ -3,140 +3,151 @@
     internal class Program
     {
         /*------------------------*/
-        /* Tipos de metodos en C# */
+        /*      Methods in C#     */
         /*------------------------*/
 
-        //Que es un metodo?
-        //Los metodos o funciones son instrucciones las cuales se pueden repetir mulltiples veces sin necesidad de escribirlas otra vez
-        //estos se declaran usando la palabra reservada "voi" o un tipo de dato ya sea "int" o "string"
-        //Los metodos pueden resivir parametros los cuales se colocan en sus parentesis, los cuales una vez puestos deben ser si o si llenado al momento de llamar a un metodo
-        //los parametros de un metodo pueden ser tanto de tipo "int" como "string"
-        //Cabe recalcar que los meodos se debe declarar FUERA del metodo Main
+        /* What's is a Method? */
 
-        //Metodos Void
-        //Los metodos void son aquellos metodos que no devuelven nada
-        //Estos se declaram usamdo la palabra "void" y el nombre de este metodo junto a sus parentesis
-        //Estos metodos se utilizan por lo general para controlar datos, insertar datos o leer datos
-        //Ejemplo: agregar un nuevo empleado a una lista
+        // A method is an instruction that can be repeated
+        // multiple times without rewriting
 
-        static void Ejemplo1()
+        // The methods can be classified according to their
+        // declaration and return type
+
+        // Methods must always be declared outside the 'Main' method
+        // and there must never be methods inside other methods.
+
+        /*-----------------------------*/
+        /* Static and instance methods */
+        /*-----------------------------*/
+
+        /* Static Methods */
+
+        // Static methods are methods that belong to the class itself,
+        // to invoke these methods you must use the name of the class
+        // itself together with the name of the method.
+
+        // To declare a static method we use the reserved word static
+        // followed by the type of method
+
+        static void sayHello()
         {
-            Console.WriteLine("Hello");
+            Console.WriteLine( "Hello World" );
         }
 
-        //metodos con declaracion de datos
-        //estos metodos a diferencia de los "void" si devuelven un valor y para ello se utiliza la palabra "return"
-        //para declarar estos metodos se utiliza el tipo de dato junto al nombre del metodo y sus parentesis
-        //Estos metodos se suelen utilizar para operaciones matematicas o cuando se necesite devolver un valor de cualquier tipo
-        //sea texto, numerico, boleano, etc
+        /* Instance Methods */
 
-        static int Ejemplo2()
+        // Unlike static methods,
+        // instance methods are those methods that require an object
+        // of their class before they can be called, these methods
+        // rather than belonging to the classes belong to the instance
+        // of the class or to the Object.
+
+        // To declare an instance method it is not necessary to write
+        // the word static only the type of method with its name
+
+        void presentation()
         {
-            return 1 + 2;
+            Console.WriteLine( "I'm Senko" );
         }
 
-        static string Ejemplo2_1()
+        /*------------------------*/
+        /*    Types of Methods    */
+        /*------------------------*/
+
+        /* Void Methods */
+
+        // Void methods are those that do not return any value, these
+        // methods execute their code without returning anything.
+
+        // This type of method is useful when you need to perform an action,
+        // such as printing to the console or changing the value of a variable,
+        // but you do not need to return any value.
+
+        static void voidMethod()
         {
-            return "hello";
+            Console.WriteLine( "I feel void every day" );
         }
 
-        static bool Ejemplo2_2()
+        /* Return Methods */
+
+        // Unlike void methods, return methods do return a value, being this of any
+        // data type, these methods are declared by changing the word void for the
+        // data type that the method will return.
+
+        static String returnMethod()
         {
-            return true;
+            return "WAKE UP WAKE UP WAKE UP WAKE UP WAKE UP WAKE UP WAKE UP WAKE UP";
         }
 
-        static double Ejemplo2_3()
+        int addition()
         {
-            return 2 / 5;
+            return 6 + 5;
         }
 
-        /*-------------------------*/
-        /* Parametros de un metodo */
-        /*-------------------------*/
-
-        // Los métodos pueden recibir parámetros para ser más reutilizables.
-        // Los parámetros se definen dentro del método junto con su tipo y se separan por comas.
-        // Se deben proporcionar al invocar el método.
-
-        static void EmjemploParametros(string txt )
+        static int number1()
         {
-            Console.WriteLine(txt);
+            return 1;
         }
 
-        static int Suma(int n1, int n2)
+        static int number2()
         {
-            return n1 + n2;
+            return 2;
         }
 
-        //Parametros opcionales
-        //Los parametros opcionales sirven para no tener que colocar todos los parametros en una invocacion de metodo
-        //estos parametros se declaran con un valor ya asignado
-
-        static void ParametrosOpcionales(string txt="Hello")
+        static String message()
         {
-            Console.WriteLine(txt);   
+            return "Senko is going to dominate the world..";
         }
 
-        static int Suma2(int n1, int n2, int n3 = 0)
+
+        /*------------------------*/
+        /* Parameters in a method */
+        /*------------------------*/
+
+        static void saySomething(string value)
         {
-            return n1 + n2 + n3;
-        }
-        //En este ejemplo se le asignan 3 parametros al metodo Suma2 siendo uno de estos opcional
-        //los parametros opcionles se deben declarar SIEMPRE despues de los parametros no opcionales
-
-
-        /*-------------------------*/
-        /* Sobrecarga de un metodo */
-        /*-------------------------*/
-
-        //La sobrecarga en un metodo nos permite tener varios metodos con el mismo nombre sin que de error
-        //Esto se logra al pasarle diferentes tipos de parametros tanto en diferente cantidad como en tipo
-
-        static void txt()
-        {
-            Console.WriteLine("Hello");
+            Console.WriteLine( value );
         }
 
-        static void txt(string str)
+        static void yourNameAndAge(string name, int age)
         {
-            Console.WriteLine(str);
-        }
-        // La sobrecarga de métodos permite tener varios métodos con el mismo nombre pero diferente cantidad o tipo de parámetros.
-        // Esto se logra al pasar diferentes tipos o cantidad de parámetros.
-        static void txt(int num)
-        {
-            Console.WriteLine(num.ToString());
+            Console.WriteLine("Your name is: " + name);
+            Console.WriteLine("Your age is: " + age);
         }
 
-        // Método Main
-        // Es el punto de entrada principal del programa C#.
-        // Las llamadas a otros métodos deben realizarse dentro de este.
         static void Main( string[] args )
         {
-            /*-------------------------*/
-            /* Invocacion de un metodo */
-            /*-------------------------*/
 
-            //Para invocar un metodo se utiliza el nombre de este seguido de sus parentesis
-            //en caso de que el metodo tenga parametros se deben colocar adentro del parentesis de la invocacion y se deben utilizar comas para separar los parametros
-
-            //sin parametros
-            Ejemplo1();
-            Ejemplo2();
-
-            //Con parametros
-            EmjemploParametros( "Hello" );
-            Suma( 1, 2 );
-
-            //Parametros opcionales
-            Suma2(1, 2 ,3); //Dara 6
-            Suma2(1, 2); //Dara 3
-
-            //Metodos con sobrecarga
-            txt();
-            txt("Hello");
-            txt(6);
+            yourNameAndAge( "Senko", 18 );
 
         }
+
     }
 }
+
+/* invocation of methods */
+
+// Static Methods
+sayHello();
+
+// Intance Methods
+
+Program S = new Program();
+
+S.presentation();
+
+// Void Method
+voidMethod();
+
+// Return Methods
+String text = returnMethod();
+
+int number = S.addition();
+int num1 = number1();
+int result = num1 + number2();
+
+Console.WriteLine( text );
+Console.WriteLine( number );
+Console.WriteLine( result );
+Console.WriteLine( message() );
