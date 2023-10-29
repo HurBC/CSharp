@@ -3,18 +3,47 @@
     internal class Program
     {
 
-        static void sayHello(string name = "invited" )
-        {
-            Console.WriteLine("Hello " + name);
-        }
-
         static void Main( string[] args )
         {
 
-            sayHello();
-            sayHello( "Senko" );
+            /*-----------------*/
+            /* Class Hierarchy */
+            /*-----------------*/
+
+            Employee senko = new Employee();
+            Boss pomni = new Boss();
+            CEO freddyFazbear = new CEO();
+
+            senko.Work();
+            pomni.Work();
+            freddyFazbear.Work();
+
+            senko.Manage();
+            pomni.Manage();
+            freddyFazbear.Manage();
 
         }
+
+    }
+
+    class Employee
+    {
+        public void Work()
+        {
+            Console.WriteLine("is working");
+        }
+    }
+
+    class Boss : Employee
+    {
+        public void Manage()
+        {
+            Console.WriteLine("managing...");
+        }
+    }
+
+    class CEO : Boss
+    {
 
     }
 }
